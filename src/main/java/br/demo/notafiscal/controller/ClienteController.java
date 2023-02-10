@@ -24,16 +24,17 @@ public class ClienteController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Cliente> cadastrar(@RequestBody ClienteDto clienteDto){
-        return ResponseEntity.ok().body(clienteService.cadastrar(clienteDto));
+    public ResponseEntity<Cliente> cadastrar(@RequestBody Cliente cliente){
+        return ResponseEntity.ok().body(clienteService.cadastrar(cliente));
+    }
+    @RequestMapping("/find")
+    @PostMapping
+    @Transactional
+    public ResponseEntity<List<Cliente>> detalhar(@RequestBody Cliente cliente){
+        return ResponseEntity.ok().body(clienteService.detalhar(cliente));
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<ClienteDto> detalhar(@PathVariable(value = "id") int id){
-//        return ResponseEntity.ok().body(clienteService.detalhar(id));
-//    }
-
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     public void deletar(@PathVariable("id") int id){
         clienteService.remover(id);
     }

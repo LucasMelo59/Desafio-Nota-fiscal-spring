@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface ClienteService {
 
-    public Cliente cadastrar(ClienteDto clienteDto);
+    public Cliente cadastrar(Cliente cliente);
     public List<Cliente> listaDeClientes();
-    public Cliente detalhar(String razaoSocial);
+    public List<Cliente> detalhar(Cliente cliente);
     public void remover(int id);
 
 

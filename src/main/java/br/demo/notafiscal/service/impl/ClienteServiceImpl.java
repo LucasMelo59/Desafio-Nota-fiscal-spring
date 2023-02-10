@@ -6,22 +6,20 @@ import br.demo.notafiscal.model.entities.Cliente;
 import br.demo.notafiscal.model.repositories.ClienteRepository;
 import br.demo.notafiscal.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @Autowired
 
     @Override
-    public Cliente cadastrar(ClienteDto clienteDto) {
-        S save = clienteRepository.save(clienteDto);
-        return save;
+    public Cliente cadastrar(Cliente cliente) {
+        return clienteRepository.save(cliente);
     }
 
     @Override
@@ -30,9 +28,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente detalhar(@RequestParam String razaoSocial) {
-        Optional<Cliente> obj = clienteRepository.findByName(razaoSocial);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto nao encontrado"));
+    public List<Cliente> detalhar(Cliente cliente) {
+        return clienteRepository.findByRazaoSocial(cliente.getRazaoSocial());
     }
 
     @Override

@@ -17,13 +17,13 @@ public class Cliente {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String razaoSocial;
-    private String cnjpj;
+    private String cnpj;
     private String tipoRegimeTributario;
     private String email;
 
-    public Cliente(String razaoSocial, String cnjpj, String tipoRegimeTributario, String email) {
+    public Cliente(String razaoSocial, String cnpj, String tipoRegimeTributario, String email) {
         this.razaoSocial = razaoSocial;
-        this.cnjpj = cnjpj;
+        this.cnpj = cnpj;
         this.tipoRegimeTributario = tipoRegimeTributario;
         this.email = email;
     }
