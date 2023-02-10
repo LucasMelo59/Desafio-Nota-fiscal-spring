@@ -23,7 +23,7 @@ public class Cliente {
 
     public Cliente(String razaoSocial, String cnpj, String tipoRegimeTributario, String email) {
         this.razaoSocial = razaoSocial;
-        this.cnpj = cnpj;
+        this.cnpj = cnpj;   
         this.tipoRegimeTributario = tipoRegimeTributario;
         this.email = email;
     }

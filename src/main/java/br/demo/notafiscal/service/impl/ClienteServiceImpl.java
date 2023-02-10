@@ -28,8 +28,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<Cliente> detalhar(Cliente cliente) {
-        return clienteRepository.findByRazaoSocial(cliente.getRazaoSocial());
+    public List<Cliente> findByRazaoSocial (String razaoSocial) {
+        return clienteRepository.findByRazaoSocial(razaoSocial);
     }
 
     @Override
