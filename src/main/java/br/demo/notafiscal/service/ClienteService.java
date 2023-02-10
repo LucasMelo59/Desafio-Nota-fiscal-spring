@@ -9,9 +9,10 @@ public interface ClienteService {
 
     public Cliente cadastrar(Cliente cliente);
     public List<Cliente> listaDeClientes();
-    public List<Cliente> findByRazaoSocial (String razaoSocial);
+    public List<Object> findByRazaoSocial (String razaoSocial);
     public void remover(int id);
-
+    public Long countCLientes();
+    public Long countForTipoRegimeTributario(String tipoRegimeTributario);
 
 
 }

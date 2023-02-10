@@ -1,9 +1,7 @@
 package br.demo.notafiscal.model.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import br.demo.notafiscal.model.enuns.TipoRegimeTributario;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,15 +14,17 @@ import lombok.Setter;
 public class Cliente {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "razao_social")
     private String razaoSocial;
     private String cnpj;
-    private String tipoRegimeTributario;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_regime_tributario")
+    private TipoRegimeTributario tipoRegimeTributario;
     private String email;
 
-    public Cliente(String razaoSocial, String cnpj, String tipoRegimeTributario, String email) {
+    public Cliente(String razaoSocial, String cnpj, String email) {
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;   
-        this.tipoRegimeTributario = tipoRegimeTributario;
         this.email = email;
     }
 }

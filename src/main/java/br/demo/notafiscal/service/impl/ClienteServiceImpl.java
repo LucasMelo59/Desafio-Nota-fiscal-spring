@@ -28,7 +28,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<Cliente> findByRazaoSocial (String razaoSocial) {
+    public List<Object> findByRazaoSocial (String razaoSocial) {
         return clienteRepository.findByRazaoSocial(razaoSocial);
     }
 
@@ -40,5 +40,15 @@ public class ClienteServiceImpl implements ClienteService {
     }else {
         throw new ObjectNotFoundException("Objeto não encontrado");
     }
+    }
+
+    @Override
+    public Long countCLientes() {
+        return clienteRepository.countClientes();
+    }
+
+    @Override
+    public Long countForTipoRegimeTributario(String tipoRegimeTributario) {
+        return clienteRepository.countForTipoRegimeTributario(tipoRegimeTributario);
     }
 }

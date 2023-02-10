@@ -28,14 +28,24 @@ public class ClienteController {
         return ResponseEntity.ok().body(clienteService.cadastrar(cliente));
     }
     @RequestMapping("/find")
-    @PostMapping
+    @GetMapping
     @Transactional
-    public ResponseEntity<List<Cliente>> findByRazaoSocial (@RequestBody String razaoSocial){
-        return ResponseEntity.ok().body(clienteService.findByRazaoSocial (razaoSocial));
+    public ResponseEntity<List<Object>> findByRazaoSocial (@RequestHeader String razaoSocial){
+        return ResponseEntity.ok().body(clienteService.findByRazaoSocial(razaoSocial));
     }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable("id") int id){
         clienteService.remover(id);
+    }
+    @GetMapping
+    @RequestMapping("countCLientes")
+    public Long countCLientes(){
+        return clienteService.countCLientes();
+    }
+    @PostMapping
+    @RequestMapping("countPorTipo")
+    public Long countCLienteForType(String tipo){
+        return clienteService.countForTipoRegimeTributario(tipo);
     }
 }
