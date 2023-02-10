@@ -15,15 +15,15 @@ public class Cliente {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "razao_social")
-    private String razaoSocial;
+    private String razao_social;
     private String cnpj;
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_regime_tributario")
-    private TipoRegimeTributario tipoRegimeTributario;
+    private TipoRegimeTributario tipo_regime_tributario;
     private String email;
 
     public Cliente(String razaoSocial, String cnpj, String email) {
-        this.razaoSocial = razaoSocial;
+        this.razao_social = razaoSocial;
         this.cnpj = cnpj;   
         this.email = email;
     }

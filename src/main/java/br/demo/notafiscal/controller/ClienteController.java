@@ -30,8 +30,8 @@ public class ClienteController {
     @RequestMapping("/find")
     @GetMapping
     @Transactional
-    public ResponseEntity<List<Object>> findByRazaoSocial (@RequestHeader String razaoSocial){
-        return ResponseEntity.ok().body(clienteService.findByRazaoSocial(razaoSocial));
+    public ResponseEntity<List<Cliente>> findByRazaoSocial (@RequestHeader String razao_social){
+        return ResponseEntity.ok().body(clienteService.findByRazaoSocial(razao_social));
     }
 
     @DeleteMapping("/{id}")

@@ -28,8 +28,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<Object> findByRazaoSocial (String razaoSocial) {
-        return clienteRepository.findByRazaoSocial(razaoSocial);
+    public List<Cliente> findByRazaoSocial (String razao_social) {
+        return clienteRepository.findByRazaoSocial(razao_social);
     }
 
     @Override
