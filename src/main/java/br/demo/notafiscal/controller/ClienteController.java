@@ -4,6 +4,7 @@ import br.demo.notafiscal.dto.ClienteDto;
 import br.demo.notafiscal.model.entities.Cliente;
 import br.demo.notafiscal.service.ClienteService;
 import jakarta.transaction.Transactional;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +30,7 @@ public class ClienteController {
     }
     @RequestMapping("/find")
     @GetMapping
-    @Transactional
-    public ResponseEntity<List<Cliente>> findByRazaoSocial (@RequestHeader String razao_social){
+    public ResponseEntity<List<Cliente>> findByRazaoSocial (@RequestHeader(required = false) String razao_social){
         return ResponseEntity.ok().body(clienteService.findByRazaoSocial(razao_social));
     }
 
@@ -39,13 +39,23 @@ public class ClienteController {
         clienteService.remover(id);
     }
     @GetMapping
-    @RequestMapping("countCLientes")
+    @RequestMapping("/countCLientes")
     public Long countCLientes(){
         return clienteService.countCLientes();
     }
     @PostMapping
-    @RequestMapping("countPorTipo")
-    public Long countCLienteForType(String tipo){
+    @RequestMapping("/countPorTipo")
+    public Long countCLienteForType(@RequestBody String tipo){
         return clienteService.countForTipoRegimeTributario(tipo);
+    }
+
+    @GetMapping("/teste/{id}")
+    public Cliente findById(@PathVariable("id") int id){
+    return clienteService.findById(id);
+    }
+
+    @GetMapping("/dto")
+    public List<ClienteDto> listAllDto(){
+        return clienteService.findAllDto();
     }
 }

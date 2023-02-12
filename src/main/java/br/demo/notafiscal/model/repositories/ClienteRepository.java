@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
 
-    @Query(value = "Select * from cliente t where ( :razao_social is null or lower(t.razao_social) like lower(concat('%', :razaoSocial, '%')))", nativeQuery = true)
+    @Query(value = "Select * from cliente t where ( :razao_social is null or lower(t.razao_social) like lower(concat('%', :razao_social, '%')))", nativeQuery = true)
     List<Cliente> findByRazaoSocial(@Param("razao_social") String razao_social);
 //
     @Query(value = "SELECT COUNT(u) FROM cliente u WHERE tipo_regime_tributario = :tipoRegimeTributario", nativeQuery = true)

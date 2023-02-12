@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
@@ -31,6 +33,10 @@ public class ClienteServiceImpl implements ClienteService {
     public List<Cliente> findByRazaoSocial (String razao_social) {
         return clienteRepository.findByRazaoSocial(razao_social);
     }
+    @Override
+    public Cliente findById (int id){
+        return clienteRepository.findById(id).get();
+    }
 
     @Override
     public void remover(int id) {
@@ -50,5 +56,10 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Long countForTipoRegimeTributario(String tipoRegimeTributario) {
         return clienteRepository.countForTipoRegimeTributario(tipoRegimeTributario);
+    }
+
+    @Override
+    public List<ClienteDto> findAllDto() {
+        return clienteRepository.findAll().stream().map(ClienteDto::new).collect(Collectors.toList());
     }
 }
