@@ -12,5 +12,5 @@ public interface NotasFiscaisService {
     public NotasFiscais cadastrarNotas(NotasFiscais notasFiscais);
     public List<NotasFiscais> findAllNotas();
     public Long countNotasFiscais();
-//    public void delete(int id);
+    public void delete(int id) throws Exception;
 }

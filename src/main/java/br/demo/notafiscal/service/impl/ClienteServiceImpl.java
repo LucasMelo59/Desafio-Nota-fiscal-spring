@@ -1,12 +1,13 @@
 package br.demo.notafiscal.service.impl;
 
 import br.demo.notafiscal.dto.ClienteDto;
-import br.demo.notafiscal.exceptions.ObjectNotFoundException;
 import br.demo.notafiscal.model.entities.Cliente;
 import br.demo.notafiscal.model.repositories.ClienteRepository;
 import br.demo.notafiscal.service.ClienteService;
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,9 +44,12 @@ public class ClienteServiceImpl implements ClienteService {
     Optional<Cliente> remover = clienteRepository.findById(id);
     if(remover.isPresent()){
         clienteRepository.deleteById(id);
-    }else {
-        throw new ObjectNotFoundException("Objeto não encontrado");
     }
+    remover.ifPresentOrElse(x -> {
+        clienteRepository.deleteById(id);
+    }, () -> {
+         new Exception("objeto não encontrado");
+        });
     }
 
     @Override

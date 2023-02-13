@@ -1,6 +1,7 @@
 package br.demo.notafiscal.model.entities;
 
 import br.demo.notafiscal.model.enuns.TipoRegimeTributario;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class NotasFiscais {
     @Column (name = "cliente_id")
     private int cliente;
     private double valor;
+    @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "data_emissao")
     private Date data_emissao;
 }

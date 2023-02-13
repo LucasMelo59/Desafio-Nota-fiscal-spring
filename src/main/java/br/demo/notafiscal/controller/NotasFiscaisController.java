@@ -41,9 +41,14 @@ public class NotasFiscaisController {
         return ResponseEntity.ok().body(notasFiscaisService.cadastrarNotas(notasFiscais));
     }
 
-//    @DeleteMapping
-//    @RequestMapping("/delete/${id}")
-//    public void delete(@PathVariable("id") int id){
-//    notasFiscaisService.delete(id);
-//    }
+    @DeleteMapping
+    @RequestMapping("/delete/{id}")
+    public void delete(@PathVariable("id") int id)  {
+        try{
+            notasFiscaisService.delete(id);
+        } catch (Exception ex){
+            System.out.println(ex);
+        }
+
+    }
 }

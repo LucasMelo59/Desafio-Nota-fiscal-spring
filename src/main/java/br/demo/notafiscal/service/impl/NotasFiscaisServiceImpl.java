@@ -1,6 +1,5 @@
 package br.demo.notafiscal.service.impl;
 
-import br.demo.notafiscal.exceptions.ObjectNotFoundException;
 import br.demo.notafiscal.model.entities.Cliente;
 import br.demo.notafiscal.model.entities.NotasFiscais;
 import br.demo.notafiscal.model.repositories.NotasFiscaisRepository;
@@ -38,15 +37,15 @@ public class NotasFiscaisServiceImpl implements NotasFiscaisService {
         return notasFiscaisRepository.countNotasFiscais();
     }
 
-//    @Override
-//    public void delete(int id) {
-//        Optional<NotasFiscais> remover = notasFiscaisRepository.findById(id);
-//        if(remover.isPresent()){
-//            notasFiscaisRepository.deleteById(id);
-//        }else {
-//            throw new ObjectNotFoundException("Objeto não encontrado");
-//        }
-//    }
+    @Override
+    public void delete(int id) throws Exception {
+        Optional<NotasFiscais> remover = notasFiscaisRepository.findById(id);
+        if(remover.isPresent()){
+            notasFiscaisRepository.deleteById(id);
+        }else {
+            throw new Exception("Objeto não encontrado");
+        }
+    }
 
 
 }
