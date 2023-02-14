@@ -43,12 +43,7 @@ public class NotasFiscaisController {
 
     @DeleteMapping
     @RequestMapping("/delete/{id}")
-    public void delete(@PathVariable("id") int id)  {
-        try{
+    public void delete(@PathVariable("id") int id) throws Exception {
             notasFiscaisService.delete(id);
-        } catch (Exception ex){
-            System.out.println(ex);
-        }
-
     }
 }

@@ -22,7 +22,6 @@ public class NotasFiscais {
     @Column (name = "cliente_id")
     private int cliente;
     private double valor;
-    @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "data_emissao")
     private Date data_emissao;
 }

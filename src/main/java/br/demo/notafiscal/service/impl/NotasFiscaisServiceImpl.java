@@ -38,14 +38,9 @@ public class NotasFiscaisServiceImpl implements NotasFiscaisService {
     }
 
     @Override
-    public void delete(int id) throws Exception {
+    public void delete(int id)  {
         Optional<NotasFiscais> remover = notasFiscaisRepository.findById(id);
-        if(remover.isPresent()){
-            notasFiscaisRepository.deleteById(id);
-        }else {
-            throw new Exception("Objeto não encontrado");
-        }
+        notasFiscaisRepository.deleteById(id);
     }
-
 
 }

@@ -41,15 +41,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void remover(int id) {
-    Optional<Cliente> remover = clienteRepository.findById(id);
-    if(remover.isPresent()){
+     Optional<Cliente> remover = clienteRepository.findById(id);
         clienteRepository.deleteById(id);
-    }
-    remover.ifPresentOrElse(x -> {
-        clienteRepository.deleteById(id);
-    }, () -> {
-         new Exception("objeto não encontrado");
-        });
     }
 
     @Override
